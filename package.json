@@ -37,7 +37,8 @@
     "sequelize": "^6.31.1",
     "sequelize-typescript": "^2.1.5",
     "swagger-ui-express": "^4.6.3",
-    "uuid": "^9.0.0"
+    "uuid": "^9.0.0",
+    "uuid-v4": "^0.1.0"
   },
   "devDependencies": {
     "@nestjs/cli": "^9.3.0",
