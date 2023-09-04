@@ -9,7 +9,6 @@ import { UsersService } from './users.service';
   providers: [UsersService],
   imports: [
     SequelizeModule.forFeature([User]),
-    SequelizeModule.forFeature([User]),
     // SequelizeModule.forFeature([User, RoleTable, UserRolesModel, PetTable]),
     // RolesModule,
   ],
