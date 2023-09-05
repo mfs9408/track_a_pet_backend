@@ -6,7 +6,7 @@ import { ValidationPipes } from './pipes/validation-pipes';
 
 const bootstrap = async () => {
   const PORT = process.env.PORT || 3000;
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create(AppModule, { cors: true });
 
   const config = new DocumentBuilder()
     .setTitle('Backend')

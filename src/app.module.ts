@@ -24,7 +24,7 @@ import { AuthModule } from './auth/auth.module';
       // models: [UserTable, RoleTable, UserRolesModel, PetTable],
       autoLoadModels: true,
     }),
-    UsersModule,
+    // UsersModule,
     AuthModule,
     // RolesModule,
     // AuthModule,

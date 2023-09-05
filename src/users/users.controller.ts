@@ -26,14 +26,14 @@ export class UsersController {
     return this.usersService.createUser(userDTO);
   }
 
-  // @ApiOperation({ summary: 'All user' })
-  // @ApiResponse({ status: 200, type: [User] })
+  @ApiOperation({ summary: 'All user' })
+  @ApiResponse({ status: 200, type: [User] })
   // @Roles('ADMIN')
   // @UseGuards(RolesGuard)
-  // @Get()
-  // getAll() {
-  //   return this.usersService.getAllUsers();
-  // }
+  @Get()
+  getAll() {
+    return this.usersService.getAllUsers();
+  }
 
   // @ApiOperation({ summary: 'Give a role' })
   // @ApiResponse({ status: 200 })
