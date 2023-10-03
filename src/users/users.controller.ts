@@ -1,18 +1,8 @@
-import {
-  Body,
-  Controller,
-  Get,
-  Post,
-  UseGuards,
-  UsePipes,
-} from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { User } from './users.model';
-import { AddRoleDto } from './dto/add-role.dto';
-import { BanUserDto } from './dto/ban-user.dto';
-// import {ValidationPipes} from "../pipes/validation-pipes";
 
 @ApiTags('Users')
 @Controller('users')
@@ -24,6 +14,13 @@ export class UsersController {
   @Post()
   create(@Body() userDTO: CreateUserDto) {
     return this.usersService.createUser(userDTO);
+  }
+
+  @ApiOperation({ summary: 'Get user' })
+  @ApiResponse({ status: 200, type: User })
+  @Post('/user')
+  getUserData(@Body() user: { email: string }) {
+    return this.usersService.getUsersByEmail(user.email);
   }
 
   @ApiOperation({ summary: 'All user' })
