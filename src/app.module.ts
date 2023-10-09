@@ -1,10 +1,9 @@
 import { Module } from '@nestjs/common';
 import { SequelizeModule } from '@nestjs/sequelize';
-import { UsersModule } from './users/users.module';
 import { ConfigModule } from '@nestjs/config';
 import { User } from './users/users.model';
 import { AuthModule } from './auth/auth.module';
-// import { PetTable } from './pets/pets.model';
+import { AppInitModule } from './app/app-init.module';
 
 @Module({
   controllers: [],
@@ -26,6 +25,7 @@ import { AuthModule } from './auth/auth.module';
     }),
     // UsersModule,
     AuthModule,
+    AppInitModule,
     // RolesModule,
     // AuthModule,
   ],
