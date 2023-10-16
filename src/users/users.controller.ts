@@ -1,8 +1,9 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post, Patch } from '@nestjs/common';
+import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
-import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { User } from './users.model';
+import { ChangeUserDataDto } from './dto/change-user-data.dto';
 
 @ApiTags('Users')
 @Controller('users')
@@ -14,6 +15,13 @@ export class UsersController {
   @Post()
   create(@Body() userDTO: CreateUserDto) {
     return this.usersService.createUser(userDTO);
+  }
+
+  @ApiOperation({ summary: 'Change user data' })
+  @ApiResponse({ status: 200, type: User })
+  @Patch('/edit')
+  changeUserData(@Body() dataDTO: ChangeUserDataDto) {
+    return this.usersService.changeUserData(dataDTO);
   }
 
   @ApiOperation({ summary: 'Get user' })

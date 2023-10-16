@@ -4,6 +4,7 @@ import { ConfigModule } from '@nestjs/config';
 import { User } from './users/users.model';
 import { AuthModule } from './auth/auth.module';
 import { AppInitModule } from './app/app-init.module';
+import { LibraryModule } from './library/library.module';
 
 @Module({
   controllers: [],
@@ -26,8 +27,8 @@ import { AppInitModule } from './app/app-init.module';
     // UsersModule,
     AuthModule,
     AppInitModule,
+    LibraryModule,
     // RolesModule,
-    // AuthModule,
   ],
 })
 export class AppModule {}

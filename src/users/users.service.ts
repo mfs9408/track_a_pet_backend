@@ -5,12 +5,12 @@ import { InjectModel } from '@nestjs/sequelize';
 import { CreateUserDto } from './dto/create-user.dto';
 import { AddRoleDto } from './dto/add-role.dto';
 import { BanUserDto } from './dto/ban-user.dto';
+import { ChangeUserDataDto } from './dto/change-user-data.dto';
 
 @Injectable()
 export class UsersService {
   constructor(
-    @InjectModel(User) private userRepository: typeof User,
-    // private roleService: RolesService,
+    @InjectModel(User) private userRepository: typeof User, // private roleService: RolesService,
   ) {}
 
   async createUser(dto: CreateUserDto) {
@@ -24,6 +24,29 @@ export class UsersService {
     // user.pets = [];
 
     return user;
+  }
+
+  async changeUserData(dto: ChangeUserDataDto) {
+    const user = await this.userRepository.findByPk(dto.id);
+
+    const email = await this.userRepository.findOne({
+      where: { email: dto.email },
+    });
+
+    if (email.email === dto.email) {
+      user.name = dto.name;
+
+      return { email: user.email, name: user.name };
+    }
+
+    if (email.email) {
+      throw new HttpException('Email already exists', HttpStatus.CONFLICT);
+    }
+
+    user.email = dto.email;
+    user.name = dto.name;
+
+    return { email: user.email, name: user.name };
   }
 
   async getAllUsers() {
